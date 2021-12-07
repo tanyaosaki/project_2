@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <script src="./script.js"></script>
+</head>
+<body>
+    <div class="user-form">
+        <div class="yellow"></div>
+        <h1>To-do list</h1>
+        <div class="sortpic">
+            <div class="sortdiv" onclick="change()">
+                <img class="sortButton" onmouseover="onHover()" onmouseout="offHover()" onclick="sortList()" src="images/sortlowgrey.svg" alt="sort button">
+            </div>
+        </div>
+        <div class="main">
+            <div class="list-container">
+                    <ul class="list-element" id="myUL">                        
+                    </ul>
+                <div class="list-element-input">
+                    <input class="element-text" id="myInput" type="text">
+                    <img src="images/deletegrey.svg" alt="deletegrey">
+                </div>
+            </div>
+        </div>
+        <button type="button" onclick="newElement()" class="bigbutton"><p class="circle">+</p>Добавить</button>
+    </div>
+</body>
+</html>
