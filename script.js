@@ -77,18 +77,18 @@ function sortList() {
 }
 
 function newElement() {
-  let inputValue = document.getElementById("myInput").value;
-  let txt = document.createTextNode(inputValue);
-  console.log(txt);
+  //let inputValue = document.getElementById("myInput").value;
+  //let txt = document.createTextNode(inputValue);
+  //console.log(txt);
   let listElements = document.getElementById("myUL");
   let li = document.createElement("li");
   listElements.appendChild(li);
 
-  let p = document.createElement("p");
-  p.className = "element-text";
-  li.appendChild(p);
-
-  p.appendChild(txt);
+  let input = document.createElement("input");
+  input.className = "element-text";
+  input.id = "myInput";
+  input.type = "text";
+  li.appendChild(input);
   let span = document.createElement("span");
   let x = document.createElement("img");
   span.className = "close";
@@ -97,6 +97,13 @@ function newElement() {
   x.className = "delete";
   span.appendChild(x);
   li.appendChild(span);
-  document.getElementById("myInput").value = "";
+  //document.getElementById("myInput").value = "";
+  //console.log(li.innerHTML);
 }
 
+function reservation() {
+  let z = this.parentElement;
+  let inputValue = this.value;
+  let txt = document.createTextNode(inputValue);
+  z.appendChild(txt);
+}
