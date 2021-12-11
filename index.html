@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="user-form">
+    <form class="user-form">
         <div class="yellow"></div>
         <h1>To-do list</h1>
         <div class="sortpic">
@@ -24,9 +24,10 @@
             <div class="list-container">
                 <ul class="list-element" id="myUL">
                     <li>
-                        <input class="element-text" onchange="reservation()" id="myInput" type="text">
-                        <span class="close" onmouseover="deleteElement()>
-                            <img class="delete" src="images/cross.svg">
+                        <p class="element-text"></p>
+                        <input class="element-input" onmouseover="reservation()" type="text">
+                        <span class="close" onmouseover="deleteElement()">
+                            <img src="images/cross.svg" class="delete">
                         </span>
                     </li>
                 </ul>
@@ -35,7 +36,7 @@
         <button type="button" onclick="newElement()" class="bigbutton">
             <p class="circle">+</p>Добавить
         </button>
-    </div>
+    </form>
 </body>
 
 </html>

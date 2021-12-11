@@ -12,7 +12,6 @@ function deleteElement() {
 let isClick = false;
 function change() {
   let sortButton = document.querySelector('.sortButton');
-  console.log('start click isSortUp' + isClick);
   if (isClick) {
     sortButton.src = "images/sortlowblack.svg";
   } else {
@@ -36,6 +35,7 @@ function offHover() {
     sortButton.src = "images/sortlowgrey.svg";
   }
 }
+
 function sortList() {
   let shouldSwitch;
   let i;
@@ -52,12 +52,12 @@ function sortList() {
     for (i = 0; i < (b.length - 1); i++) {
       shouldSwitch = false;
       if (dir == "asc") {
-        if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+        if (b[i].innerText.toLowerCase() > b[i + 1].innerText.toLowerCase()) {
           shouldSwitch = true;
           break;
         }
       } else if (dir == "desc") {
-        if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML.toLowerCase()) {
+        if (b[i].innerText.toLowerCase() < b[i + 1].innerText.toLowerCase()) {
           shouldSwitch = true;
           break;
         }
@@ -77,16 +77,15 @@ function sortList() {
 }
 
 function newElement() {
-  //let inputValue = document.getElementById("myInput").value;
-  //let txt = document.createTextNode(inputValue);
-  //console.log(txt);
   let listElements = document.getElementById("myUL");
   let li = document.createElement("li");
   listElements.appendChild(li);
-
+  let p = document.createElement("p");
+  p.className = "element-text";
+  li.appendChild(p)
   let input = document.createElement("input");
-  input.className = "element-text";
-  input.id = "myInput";
+  input.className = "element-input";
+  input.setAttribute("onmouseover", "reservation()");
   input.type = "text";
   li.appendChild(input);
   let span = document.createElement("span");
@@ -97,13 +96,19 @@ function newElement() {
   x.className = "delete";
   span.appendChild(x);
   li.appendChild(span);
-  //document.getElementById("myInput").value = "";
-  //console.log(li.innerHTML);
+  console.log();
 }
 
+let el = document.getElementsByClassName("element-input");
 function reservation() {
-  let z = this.parentElement;
-  let inputValue = this.value;
-  let txt = document.createTextNode(inputValue);
-  z.appendChild(txt);
+  for (let i = 0; i < el.length; i++) {
+    el[i].onchange = function () {
+      let x = el[i];
+      let parentLi = this.parentElement;
+      let p = parentLi.firstElementChild;
+      p.append(this.value);
+      p.style.display = "flex";
+      x.style.display = "none";
+    }
+  }
 }

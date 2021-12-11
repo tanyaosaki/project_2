@@ -5,7 +5,6 @@ body {
     align-items: center;
 }
 .user-form {
-    /*position: relative;   */ 
     margin-top: 25vh;
 	margin-bottom: 25vh;
     justify-content: center;
@@ -132,7 +131,6 @@ h1 {
 
 .list-element {
     width: 229px;
-    /*display: flex;*/
     padding: 0px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -150,6 +148,19 @@ border: none;
 }
 
 .element-text {
+    display: none;
+    align-items: center;
+    width: 209px;
+    padding: 0px;
+    margin: 0px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+}
+.element-input {
     display: flex;
     align-items: center;
     width: 209px;
