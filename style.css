@@ -150,15 +150,17 @@ border: none;
 .element-text {
     display: none;
     align-items: center;
-    width: 209px;
+    width: 159px;
     padding: 0px;
     margin: 0px;
+    margin-right: 50px;
     font-size: 14px;
     line-height: 16px;
     color: #000000;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
+    border: 1px solid #efe5fc;
 }
 .element-input {
     display: flex;
@@ -199,3 +201,7 @@ border: none;
     background-color: #833AE0;
     border: none;
   }
+
+  li:hover{
+    cursor: pointer;
+    }

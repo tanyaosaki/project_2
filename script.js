@@ -79,6 +79,8 @@ function sortList() {
 function newElement() {
   let listElements = document.getElementById("myUL");
   let li = document.createElement("li");
+  li.setAttribute("draggable", "true");
+  li.className = "list";
   listElements.appendChild(li);
   let p = document.createElement("p");
   p.className = "element-text";
@@ -100,6 +102,7 @@ function newElement() {
 }
 
 let el = document.getElementsByClassName("element-input");
+console.log(el);
 function reservation() {
   for (let i = 0; i < el.length; i++) {
     el[i].onchange = function () {
@@ -112,3 +115,54 @@ function reservation() {
     }
   }
 }
+
+
+let listElement = document.querySelector('.list-element');
+console.log(listElement);
+
+// drag & drop
+
+listElement.addEventListener('dragstart', (evt) => {
+  evt.target.classList.add('selected');
+})
+
+listElement.addEventListener('dragend', (evt) => {
+  evt.target.classList.remove('selected');
+});
+
+listElement.addEventListener('dragover', (evt) => {
+  evt.preventDefault();
+  const activeElement = listElement.querySelector('.selected');
+  console.log(activeElement);
+  const currentElement = evt.target;
+  console.log(currentElement);
+  const isMoveable = activeElement !== currentElement &&
+    currentElement.classList.contains('list');
+  console.log(isMoveable);
+  if (!isMoveable) {
+    return;
+  }
+
+  const nextElement = getNextElement(evt.clientY, currentElement);
+  console.log(nextElement);
+  if (
+    nextElement &&
+    activeElement === nextElement.previousElementSibling ||
+    activeElement === nextElement
+  ) {
+    return;
+  }
+
+  listElement.insertBefore(activeElement, nextElement);
+});
+
+const getNextElement = (cursorPosition, currentElement) => {
+  const currentElementCoord = currentElement.getBoundingClientRect();
+  const currentElementCenter = currentElementCoord.y + currentElementCoord.height / 2;
+
+  const nextElement = (cursorPosition < currentElementCenter) ?
+    currentElement :
+    currentElement.nextElementSibling;
+
+  return nextElement;
+};
